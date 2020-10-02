@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +10,19 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/Weather.css' %}"/>
 </head>
 <body>
-
+    <div class="container-fluid banner">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-md ">
+                    <div class="navbar-brand">
+                        What´s the weather like?
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="container form">
+            {{ city_weather.City}}
+        </div>
+     </div>
 </body>
 </html>
