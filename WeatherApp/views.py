@@ -15,13 +15,12 @@ def index(request):
 
     form = CityForm()  # Put the form in the variable form
 
-    cities = City.objects.all()  # Get all the table content in the variable cities
-    weather_data = []
+    Cities = City.objects.all()  # Get all the table content in the variable cities
+    Weather_data = []
 
-    for city in cities:
+    for city in Cities:   # For each line of the database table City
 
-        r = requests.get(url, format(city)).json()
-
+        # Get the coordinates of address of each database table City
         Geolocator = Nominatim(user_agent="Lucas")
         Location = Geolocator.geocode(city.Address)
         Coordinates = []
@@ -41,11 +40,14 @@ def index(request):
         data = response.json()
 
         city_weather = {
-            'City': city,
+            'City': city.Address,
             'Temperature': data['current']['temp'],
             'Humidity': data['current']['humidity'],
             'Wind_Speed': data['current']['wind_speed'],
             'Pressure': data['current']['pressure'],
         }
-    context = {'city_weather': city_weather}
+
+        Weather_data.append(city_weather)  #
+
+    context = {'city_weather': Weather_data, 'form': form}
     return render(request, 'WeatherApp/Weather.html', context)

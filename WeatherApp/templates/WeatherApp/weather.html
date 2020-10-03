@@ -21,11 +21,18 @@
             </div>
         </div>
         <div class="container form">
+            <form class="post-form" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="save btn btn-default">Save</button>
+            </form>
+            {% for city_weather in weather_data %}
             <p>{{ city_weather.City}}</p>
             <p>{{ city_weather.Temperature}}ºF</p>
             <p>{{ city_weather.Humidity}}%</p>
             <p>{{ city_weather.Wind_Speed}}Km/h</p>
             <p>{{ city_weather.Pressure}}hPa</p>
+            {% endfor %}
         </div>
     </div>
 </body>
