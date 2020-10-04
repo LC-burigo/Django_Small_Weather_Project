@@ -27,4 +27,10 @@ body{
     margin-left:750px;
     margin-right:750px;
 }
-
+.banner .formulario{
+    margin-top:150px;
+    text-align:center;
+    border:3px solid #73AD21;
+    margin-left:750px;
+    margin-right:750px;
+}

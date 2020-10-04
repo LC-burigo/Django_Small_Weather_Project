@@ -6,6 +6,7 @@ from geopy.geocoders import Nominatim
 from .forms import CityForm
 from .models import City
 
+
 def index(request):
     url = "https://community-open-weather-map.p.rapidapi.com/onecall/timemachine"
 
@@ -35,10 +36,11 @@ def index(request):
             'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com",
             'x-rapidapi-key': "c9a626ea64msh6698ab14d44886ap1f605bjsn85a708b80b0f"
         }
-
+        # Get all the features of this particular city, in the last 24 hours
         response = requests.request("GET", url, headers=headers, params=querystring)
         data = response.json()
 
+        # Get only the current features of this particular city and put it in a dictionary
         city_weather = {
             'City': city.Address,
             'Temperature': data['current']['temp'],
@@ -47,7 +49,9 @@ def index(request):
             'Pressure': data['current']['pressure'],
         }
 
+        # Put the dictionary inside of a list (element)
         Weather_data.append(city_weather)  #
 
+    pprint(Weather_data)
     context = {'city_weather': Weather_data, 'form': form}
     return render(request, 'WeatherApp/Weather.html', context)
