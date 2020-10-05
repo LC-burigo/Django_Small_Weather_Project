@@ -10,34 +10,33 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/Weather.css' %}"/>
 </head>
 <body>
-    <div class="container-fluid banner">
-        <div class="row">
-            <div class="col-md-12">
-                <nav class="navbar navbar-md ">
-                    <div class="navbar-brand">
-                        What´s the weather like?
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <div class="container form">
+<!--    <div class="container-fluid banner">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12">-->
+<!--                <nav class="navbar navbar-md ">-->
+<!--                    <div class="navbar-brand">-->
+<!--                        What´s the weather like?-->
+<!--                    </div>-->
+<!--                </nav>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="container form">-->
             <form class="post-form" method="POST">
                 {% csrf_token %}
                 {{form.as_p}}
                 <button type="submit" class="save btn btn-default">Save</button>
             </form>
         </div>
-        {% for city_weather in Weather_data %}
-            <div class="formulario">
+        {% if response.status_code == 200 %}
                 <div class="post">
-                    <p>{{ city_weather.City }}</p>
-                    <p>{{ city_weather.Temperature}} ºF</p>
-                    <p>{{ city_weather.Humidity }} %</p>
-                    <p>{{ city_weather.Wind_Speed }} Km/h</p>
-                    <p>{{ city_weather.Pressure }} hPa</p>
+                    <p>{{ context.City }}</p>
+                    <p>{{ context.Temperature}} ºF</p>
+                    <p>{{ context.Humidity }} %</p>
+                    <p>{{ context.Wind_Speed }} Km/h</p>
+                    <p>{{ context.Pressure }} hPa</p>
                 </div>
             </div>
-        {% endfor %}
+        {% endif %}
     </div>
 </body>
 </html>
