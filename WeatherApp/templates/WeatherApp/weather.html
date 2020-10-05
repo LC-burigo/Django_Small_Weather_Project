@@ -27,16 +27,16 @@
                 <button type="submit" class="save btn btn-default">Save</button>
             </form>
         </div>
-        {% if response.status_code == 200 %}
+        {% for City_Weather in Weather_list %}
                 <div class="post">
-                    <p>{{ context.City }}</p>
-                    <p>{{ context.Temperature}} ºF</p>
-                    <p>{{ context.Humidity }} %</p>
-                    <p>{{ context.Wind_Speed }} Km/h</p>
-                    <p>{{ context.Pressure }} hPa</p>
+                    <p>{{ City_Weather.City }}</p>
+                    <p>{{ City_Weather.Temperature}} ºF</p>
+                    <p>{{ City_Weather.Humidity }} %</p>
+                    <p>{{ City_Weather.Wind_Speed }} Km/h</p>
+                    <p>{{ City_Weather.Pressure }} hPa</p>
                 </div>
             </div>
-        {% endif %}
+        {% endfor %}
     </div>
 </body>
 </html>

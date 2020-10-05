@@ -8,18 +8,43 @@ from .models import City
 
 
 def index(request):
-    Input_Address = 'london'
     url = "https://community-open-weather-map.p.rapidapi.com/onecall/timemachine"
-    Cities = City.objects.all()
     form = CityForm()
 
     if request.method == 'POST':
         form = CityForm(request.POST)  # Handling form request
-        form.save()
 
-        # if form.is_valid():
-        #     Address = form.cleaned_data['Address']
+        if form.is_valid():
+            New_City = form.cleaned_data['Address']
+            New_Dt = form.cleaned_data['Dt']
+            Existing_City = City.objects.filter(Address=New_City).count()
+            if Existing_City == 0:
+                Geolocator = Nominatim(user_agent="Lucas")
+                Location = Geolocator.geocode(New_City)
+                Coordinates = []
+                Latitude = Location.latitude
+                Longitude = Location.longitude
+                Coordinates.append(Latitude)
+                Coordinates.append(Longitude)
+                #############################################################################
+                querystring = {"lat": Coordinates[0], "lon": Coordinates[1], "dt": New_Dt}
 
+                headers = {
+                    'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com",
+                    'x-rapidapi-key': "c9a626ea64msh6698ab14d44886ap1f605bjsn85a708b80b0f"
+                }
+                # Get all the features of this particular city, in the last 24 hours
+                response = requests.request("GET", url, headers=headers, params=querystring)
+                if response.status_code == 200:
+                    form.save()
+                else:
+                    Error_message = 'City does not exist in the world'
+                    print(Error_message)
+            else:
+                Error_message = 'City already exists in the database'
+                print(Error_message)
+
+    Cities = City.objects.all()
     Weather_list = []
 
     for city in Cities:
