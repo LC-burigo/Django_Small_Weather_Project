@@ -12,23 +12,27 @@
 <body>
 <nav class="navbar navbar-dark bg-primary">
     <div class="navbar-brand">
-        What´s the weather like?
+        <srong>What´s the weather like?</srong>
     </div>
 </nav>
 <div class="banner">
     <div class="text-center">
-        <form class="post-form" method="POST">
+        <form class="post-form" width=200px method="POST">
             {% csrf_token %}
             {{form.as_p}}
-            <button type="submit" class="save btn btn-default">Save</button>
+            <button type="submit" class="btn btn-primary">Save</button>
         </form>
-        {% for City_Weather in Weather_list %}
-            <p>{{ City_Weather.City }}</p>
-            <p>{{ City_Weather.Temperature}} ºF</p>
-            <p>{{ City_Weather.Humidity }} %</p>
-            <p>{{ City_Weather.Wind_Speed }} Km/h</p>
-            <p>{{ City_Weather.Pressure }} hPa</p>
-    {% endfor %}
+        <br>
+        <br>
+        <div class="form">
+            {% for City_Weather in Weather_list %}
+                <p>{{ City_Weather.City }}</p>
+                <p>{{ City_Weather.Temperature}} ºF</p>
+                <p>{{ City_Weather.Humidity }} %</p>
+                <p>{{ City_Weather.Wind_Speed }} Km/h</p>
+                <p>{{ City_Weather.Pressure }} hPa</p>
+            {% endfor %}
+        </div>
     </div>
 </div>
 

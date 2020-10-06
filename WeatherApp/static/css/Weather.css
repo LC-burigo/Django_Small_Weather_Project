@@ -1,11 +1,19 @@
 body{
-  font-family: 'Raleway', sans-serif;
+   background:#fff;
+   font-family: 'Raleway', sans-serif;
+   color: #fff
 }
 .banner{
-  height: 100%;
-  margin: 0;
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+   height:100vh;
+   width:100%;
+   background:url('Florianopolis.jpg');
+   background-position:top;
+   background-size:cover;
+   background-repeat: no-repeat;
+}
+.banner .form{
+  border-style: groove;
+  margin-left: 750px;
+  margin-right: 750px;
+
 }
