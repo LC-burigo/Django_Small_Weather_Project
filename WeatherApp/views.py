@@ -9,6 +9,7 @@ from .models import City
 
 def index(request):
     url = "https://community-open-weather-map.p.rapidapi.com/onecall/timemachine"
+    url_second = "https://community-open-weather-map.p.rapidapi.com/weather"
     form = CityForm()
 
     if request.method == 'POST':
@@ -19,22 +20,15 @@ def index(request):
             New_Dt = form.cleaned_data['Dt']
             Existing_City = City.objects.filter(Address=New_City).count()
             if Existing_City == 0:
-                Geolocator = Nominatim(user_agent="Lucas")
-                Location = Geolocator.geocode(New_City)
-                Coordinates = []
-                Latitude = Location.latitude
-                Longitude = Location.longitude
-                Coordinates.append(Latitude)
-                Coordinates.append(Longitude)
-                #############################################################################
-                querystring = {"lat": Coordinates[0], "lon": Coordinates[1], "dt": New_Dt}
+                querystring = {"callback": "test", "id": "2172797", "units": "%22metric%22 or %22imperial%22",
+                               "mode": "xml%2C html", "q": New_City}
 
                 headers = {
                     'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com",
-                    'x-rapidapi-key': "c9a626ea64msh6698ab14d44886ap1f605bjsn85a708b80b0f"
+                    'x-rapidapi-key': "6446924734mshd20c29c9014fd63p155d13jsnc1cdd0345c05"
                 }
-                # Get all the features of this particular city, in the last 24 hours
-                response = requests.request("GET", url, headers=headers, params=querystring)
+
+                response = requests.request("GET", url_second, headers=headers, params=querystring)
                 if response.status_code == 200:
                     form.save()
                 else:

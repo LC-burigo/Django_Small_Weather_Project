@@ -10,17 +10,17 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/Weather.css' %}"/>
 </head>
 <body>
-<!--    <div class="container-fluid banner">-->
-<!--        <div class="row">-->
-<!--            <div class="col-md-12">-->
-<!--                <nav class="navbar navbar-md ">-->
-<!--                    <div class="navbar-brand">-->
-<!--                        What´s the weather like?-->
-<!--                    </div>-->
-<!--                </nav>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="container form">-->
+    <div class="container-fluid banner">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-md ">
+                    <div class="navbar-brand">
+                        What´s the weather like?
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="container form">
             <form class="post-form" method="POST">
                 {% csrf_token %}
                 {{form.as_p}}
@@ -35,7 +35,6 @@
                     <p>{{ City_Weather.Wind_Speed }} Km/h</p>
                     <p>{{ City_Weather.Pressure }} hPa</p>
                 </div>
-            </div>
         {% endfor %}
     </div>
 </body>
