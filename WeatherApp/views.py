@@ -67,24 +67,18 @@ def index(request):
         # Get all the features of this particular city, in the last 24 hours
         response = requests.request("GET", url, headers=headers, params=querystring)
 
-        if response.status_code == 200:
+        data = response.json()
 
-            data = response.json()
+        # Get only the current features of this particular city and put it in a dictionary
+        City_Weather = {
+            'City': city.Address,
+            'Temperature': data['current']['temp'],
+            'Humidity': data['current']['humidity'],
+            'Wind_Speed': data['current']['wind_speed'],
+            'Pressure': data['current']['pressure'],
+        }
 
-            # Get only the current features of this particular city and put it in a dictionary
-            City_Weather = {
-                'City': city.Address,
-                'Temperature': data['current']['temp'],
-                'Humidity': data['current']['humidity'],
-                'Wind_Speed': data['current']['wind_speed'],
-                'Pressure': data['current']['pressure'],
-            }
-
-            Weather_list.append(City_Weather)
-
-        else:
-            City_Weather = {}
-            print('Address not found')
+        Weather_list.append(City_Weather)
 
     context ={'Weather_list': Weather_list, 'form': form}
 
