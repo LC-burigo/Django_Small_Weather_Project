@@ -33,10 +33,11 @@ def index(request):
                     form.save()
                 else:
                     Error_message = 'City does not exist in the world'
-                    print(Error_message)
+
             else:
                 Error_message = 'City already exists in the database'
-                print(Error_message)
+
+
 
     Cities = City.objects.all()
     Weather_list = []
@@ -70,10 +71,11 @@ def index(request):
             'Humidity': data['current']['humidity'],
             'Wind_Speed': data['current']['wind_speed'],
             'Pressure': data['current']['pressure'],
+            'Icon': data['current']['weather'][0]['icon'],
         }
 
         Weather_list.append(City_Weather)
-
+        print(City_Weather['Icon'])
     context ={'Weather_list': Weather_list, 'form': form}
 
     return render(request, 'WeatherApp/Weather.html', context)

@@ -24,15 +24,26 @@
         </form>
         <br>
         <br>
-        <div class="form">
-            {% for City_Weather in Weather_list %}
-                <p>{{ City_Weather.City }}</p>
-                <p>{{ City_Weather.Temperature}} ºF</p>
-                <p>{{ City_Weather.Humidity }} %</p>
-                <p>{{ City_Weather.Wind_Speed }} Km/h</p>
-                <p>{{ City_Weather.Pressure }} hPa</p>
-            {% endfor %}
-        </div>
+        {% for City_Weather in Weather_list %}
+            <div class="form">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="http://openweathermap.org/img/wn/{{ City_Weather.Icon }}@2x.png" class="media-object" style="width:60px">
+                    </div>
+                    <div class="media-body">
+                            <h4 class="media-heading">{{ City_Weather.City }}</h4>
+                            <p>{{ City_Weather.Temperature}} ºF</p>
+                            <p>{{ City_Weather.Humidity }} %</p>
+                            <p>{{ City_Weather.Wind_Speed }} Km/h</p>
+                            <p>{{ City_Weather.Pressure }} hPa</p>
+                    </div>
+                    <div class="media-right">
+                        <button type="button" class="btn btn-danger">Danger</button>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 </div>
 
