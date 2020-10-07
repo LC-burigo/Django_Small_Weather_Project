@@ -1,11 +1,11 @@
 from django.shortcuts import render
 import requests
-from pprint import pprint
-import datetime
 from geopy.geocoders import Nominatim
 from .forms import CityForm
 from .models import City
-
+from django.views.generic import DeleteView
+from . import models
+from django.urls import reverse_lazy
 
 def index(request):
     url = "https://community-open-weather-map.p.rapidapi.com/onecall/timemachine"
@@ -37,8 +37,6 @@ def index(request):
             else:
                 Error_message = 'City already exists in the database'
 
-
-
     Cities = City.objects.all()
     Weather_list = []
 
@@ -57,7 +55,7 @@ def index(request):
 
         headers = {
             'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com",
-            'x-rapidapi-key': "c9a626ea64msh6698ab14d44886ap1f605bjsn85a708b80b0f"
+            'x-rapidapi-key': "6446924734mshd20c29c9014fd63p155d13jsnc1cdd0345c05"
         }
         # Get all the features of this particular city, in the last 24 hours
         response = requests.request("GET", url, headers=headers, params=querystring)
@@ -75,7 +73,11 @@ def index(request):
         }
 
         Weather_list.append(City_Weather)
-        print(City_Weather['Icon'])
-    context ={'Weather_list': Weather_list, 'form': form}
+    context = {'Weather_list': Weather_list, 'form': form}
 
     return render(request, 'WeatherApp/Weather.html', context)
+
+
+class WeatherDeleteView(DeleteView):
+    model = models
+    success_url = reverse_lazy("WeatherApp:home")
