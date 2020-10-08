@@ -38,10 +38,7 @@
                             <p>{{ City_Weather.Pressure }} hPa</p>
                     </div>
                     <div class="media-right">
-                        <form method="post">
-                            {% csrf_token %}
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                        </form>
+                        <a href="{% url 'WeatherApp:delete_city' City_Weather.Id %}">X</a>
                     </div>
                 </div>
             </div>

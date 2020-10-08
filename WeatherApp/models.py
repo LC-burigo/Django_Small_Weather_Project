@@ -2,6 +2,7 @@ from django.db import models
 
 
 class City(models.Model):
+    Id = models.AutoField(primary_key=True)
     Address = models.CharField(max_length=25)
     Dt = models.PositiveIntegerField()
 

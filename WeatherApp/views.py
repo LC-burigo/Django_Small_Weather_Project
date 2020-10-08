@@ -4,8 +4,8 @@ from geopy.geocoders import Nominatim
 from .forms import CityForm
 from .models import City
 from django.views.generic import DeleteView
-from . import models
 from django.urls import reverse_lazy
+
 
 def index(request):
     url = "https://community-open-weather-map.p.rapidapi.com/onecall/timemachine"
@@ -64,6 +64,7 @@ def index(request):
 
         # Get only the current features of this particular city and put it in a dictionary
         City_Weather = {
+            'Id': city.Id,
             'City': city.Address,
             'Temperature': data['current']['temp'],
             'Humidity': data['current']['humidity'],
@@ -79,5 +80,7 @@ def index(request):
 
 
 class WeatherDeleteView(DeleteView):
-    model = models
+    model = City
+    context_object_name = "Wd"
+    template_name = "WeatherApp/Weather_confirm_delete.html"
     success_url = reverse_lazy("WeatherApp:home")
