@@ -3,11 +3,15 @@ import requests
 from geopy.geocoders import Nominatim
 from .forms import CityForm
 from .models import City
-from django.views.generic import DeleteView
+from django.views.generic import DeleteView, TemplateView
 from django.urls import reverse_lazy
 
 
-def index(request):
+class IndexView(TemplateView):
+    template_name = 'Base.html'
+
+
+def Current(request):
     url = "https://community-open-weather-map.p.rapidapi.com/onecall/timemachine"
     url_second = "https://community-open-weather-map.p.rapidapi.com/weather"
     form = CityForm()
@@ -83,4 +87,4 @@ class WeatherDeleteView(DeleteView):
     model = City
     context_object_name = "Wd"
     template_name = "WeatherApp/Weather_confirm_delete.html"
-    success_url = reverse_lazy("WeatherApp:home")
+    success_url = reverse_lazy("WeatherApp:current")
