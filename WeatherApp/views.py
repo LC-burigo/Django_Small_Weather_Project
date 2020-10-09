@@ -88,3 +88,6 @@ class WeatherDeleteView(DeleteView):
     context_object_name = "Wd"
     template_name = "WeatherApp/Weather_confirm_delete.html"
     success_url = reverse_lazy("WeatherApp:current")
+
+
+# def Hourly(request):
