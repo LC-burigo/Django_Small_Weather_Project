@@ -9,10 +9,8 @@ body{
    background-size:cover;
    background-repeat: no-repeat;
 }
-
-.banner .form{
-  border-style: solid;
-  margin-left: 700px;
-  margin-right: 700px;
-
+.banner{
+margin-left: auto;
+margin-right: auto;
 }
+
