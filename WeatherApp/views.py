@@ -149,8 +149,10 @@ def Hourly(request):
         hourly = data['hourly']
         i = 0
         while i < len(hourly):
-            Weather_Dict[datetime.datetime.fromtimestamp(hourly[i]['dt']).strftime('%Y-%m-%d %H:%M:%S')] = [hourly[1]['temp'], hourly[i]['humidity'], hourly[i]['wind_seed'], hourly[i]['pressure']]
+            Weather_Dict[datetime.datetime.fromtimestamp(hourly[i]['dt']).strftime('%Y-%m-%d %H:%M:%S')] = [hourly[i]['temp'], hourly[i]['humidity'], hourly[i]['wind_seed'], hourly[i]['pressure']]
+            i = i + 1
         Weather_List.append(Weather_Dict)
+
 
     context = {'Weather_List': Weather_List, 'form': form}
 
