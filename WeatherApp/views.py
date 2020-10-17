@@ -7,6 +7,7 @@ from django.views.generic import DeleteView, TemplateView
 from django.urls import reverse_lazy
 import datetime
 
+
 class IndexView(TemplateView):
     template_name = 'Base.html'
 
@@ -121,7 +122,7 @@ def Hourly(request):
 
     Cities = City.objects.all()
     Weather_Dict = {}
-    Weather_List = []
+    Weather_city = []
 
     for city in Cities:
 
@@ -149,12 +150,16 @@ def Hourly(request):
         hourly = data['hourly']
         i = 0
         while i < len(hourly):
-            Weather_Dict[datetime.datetime.fromtimestamp(hourly[i]['dt']).strftime('%Y-%m-%d %H:%M:%S')] = [hourly[i]['temp'], hourly[i]['humidity'], hourly[i]['wind_seed'], hourly[i]['pressure']]
+            horario = datetime.datetime.fromtimestamp(hourly[i]['dt']).strftime('%Y-%m-%d %H:%M:%S')
+            Weather_Dict["horario{}".format(i)] = [hourly[i]['temp'], hourly[i]['humidity'], hourly[i]['wind_speed'], hourly[i]['pressure']]
             i = i + 1
-        Weather_List.append(Weather_Dict)
+        Weather_Dict["Address"] = city.Address
+        Weather_Dict["Id"] = city.Id
+        Weather_Dict['Icon'] = data['current']['weather'][0]['icon']
+        Weather_city.append(Weather_Dict)
 
 
-    context = {'Weather_List': Weather_List, 'form': form}
+    context = {'Weather_city': Weather_city, 'form': form}
 
     return render(request, 'WeatherApp/Hourly_Weather.html', context)
 

@@ -10,17 +10,19 @@
         </form>
         <br>
         <br>
-        {% for Weather_Dict in Weather_List %}
+        {% for Weather_Dict in Weather_city %}
             <div class="form">
                 <div class="media">
                     <div class="media-left">
                         <img src="http://openweathermap.org/img/wn/{{ City_Weather.Icon }}@2x.png" class="media-object" style="width:60px">
                     </div>
                     <div class="media-body">
-                            <h4 class="media-heading">{{ Weather_Dict }}</h4>
+                            <h4 class="media-heading">{{ Weather_Dict.Address }}</h4>
+                                <p>{{ Weather_Dict.horario0 }} {{ Weather_Dict.horario1 }} {{ Weather_Dict.horario2 }} {{ Weather_Dict.horario3 }} {{ Weather_Dict.horario4 }} {{ Weather_Dict.horario5 }} {{ Weather_Dict.horario6 }} {{ Weather_Dict.horario7 }} {{ Weather_Dict.horario8 }} {{ Weather_Dict.horario9 }} {{ Weather_Dict.horario10 }}</p>
+                                <p>{{ Weather_Dict.horario11 }} {{ Weather_Dict.horario12 }} {{ Weather_Dict.horario13 }} {{ Weather_Dict.horario14 }} {{ Weather_Dict.horario15 }} {{ Weather_Dict.horario16 }} {{ Weather_Dict.horario17 }} {{ Weather_Dict.horario18 }} {{ Weather_Dict.horario19 }} {{ Weather_Dict.horario20 }} {{ Weather_Dict.horario21 }} {{ Weather_Dict.horario22 }}</p>
                     </div>
                     <div class="media-right">
-                        <a href="{% url 'WeatherApp:delete_hourly_city' City_Weather.Id %}">X</a>
+                        <a href="{% url 'WeatherApp:delete_hourly_city' Weather_Dict.Id %}">X</a>
                     </div>
                 </div>
             </div>
