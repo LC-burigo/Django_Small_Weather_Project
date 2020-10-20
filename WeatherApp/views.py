@@ -151,14 +151,18 @@ def Hourly(request):
         hourly = data['hourly']
         i = 0
         while i < len(hourly):
-            horario = datetime.datetime.fromtimestamp(hourly[i]['dt']).strftime('%Y-%m-%d %H:%M:%S')
-            Weather_Dict["horario{}".format(i)] = [hourly[i]['temp'], hourly[i]['humidity'], hourly[i]['wind_speed'], hourly[i]['pressure']]
+            Weather_Dict = {
+                "Horario{}".format(i): datetime.datetime.fromtimestamp(hourly[i]['dt']).strftime('%Y-%m-%d %H:%M:%S'),
+                "Temperature{}".format(i): hourly[i]['temp'],
+                "Temperature{}".format(i): hourly[i]['humidity'],
+                "Temperature{}".format(i): hourly[i]['wind_speed'],
+                "Temperature{}".format(i): hourly[i]['pressure'],
+            }
             i = i + 1
         Weather_Dict["Address"] = city.Address
         Weather_Dict["Id"] = city.Id
         Weather_Dict['Icon'] = data['current']['weather'][0]['icon']
         Weather_city.append(Weather_Dict)
-
 
     context = {'Weather_city': Weather_city, 'form': form}
 
