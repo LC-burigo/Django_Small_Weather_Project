@@ -1,35 +1,48 @@
 {% extends "WeatherApp/Base.html" %}
 
 {% block content %}
-<div class="banner">
-    <div class="text-center">
-        <form class="post-form" width=200px method="POST">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-12">
+    <form class="post-form" width=200px method="POST">
             {% csrf_token %}
             {{form.as_p}}
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
         <br>
         <br>
-        {% for City_Weather in Weather_list %}
-            <div class="form">
-                <div class="media">
-                    <div class="media-left">
-                        <img src="http://openweathermap.org/img/wn/{{ City_Weather.Icon }}@2x.png" class="media-object" style="width:60px">
-                    </div>
-                    <div class="media-body">
-                            <h4 class="media-heading">{{ City_Weather.City }}</h4>
-                            <p>{{ City_Weather.Temperature}} ºF</p>
-                            <p>{{ City_Weather.Humidity }} %</p>
-                            <p>{{ City_Weather.Wind_Speed }} Km/h</p>
-                            <p>{{ City_Weather.Pressure }} hPa</p>
-                    </div>
-                    <div class="media-right">
-                        <a href="{% url 'WeatherApp:delete_city' City_Weather.Id %}">X</a>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-</div>
-{% endblock %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>City</th>
+                        <th>Date</th>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                        <th>Wind Speed</th>
+                        <th>Pressure</th>
+                        <th>Icon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for City_Weather in Weather_list %}
+                            <tr>
+                                <td>{{  City_Weather.Id }}</td>
+                                <td>{{  City_Weather.City }}</td>
+                                <td>{{  City_Weather.Date }}</td>
+                                <td>{{ City_Weather.Temperature}} ºF</td>
+                                <td>{{ City_Weather.Humidity }} %</td>
+                                <td>{{ City_Weather.Wind_Speed }} Km/h</td>
+                                <td>{{ City_Weather.Pressure }} hPa</td>
+                                <td><img src="http://openweathermap.org/img/wn/{{ City_Weather.Icon }}@2x.png" class="media-object" style="width:60px"></td>
+                                <td><a href="{% url 'WeatherApp:delete_city' City_Weather.Id %}">X</a></td>
 
+                            </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+        </div>
+    </div>
+{% endblock %}

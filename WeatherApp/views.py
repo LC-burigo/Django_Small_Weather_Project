@@ -71,6 +71,7 @@ def Current(request):
         City_Weather = {
             'Id': city.Id,
             'City': city.Address,
+            'Date': datetime.datetime.fromtimestamp(data['current']['dt']).strftime('%Y-%m-%d %H:%M:%S'),
             'Temperature': data['current']['temp'],
             'Humidity': data['current']['humidity'],
             'Wind_Speed': data['current']['wind_speed'],
