@@ -36,7 +36,6 @@
                                 <td>{{ City_Weather.Pressure }} hPa</td>
                                 <td><img src="http://openweathermap.org/img/wn/{{ City_Weather.Icon }}@2x.png" class="media-object" style="width:60px"></td>
                                 <td><a href="{% url 'WeatherApp:delete_city' City_Weather.Id %}">X</a></td>
-
                             </tr>
                     {% endfor %}
                 </tbody>
