@@ -10,5 +10,7 @@ body{
    background-repeat: no-repeat;
    background-attachment: fixed;
 }
-
+#table1 td{
+    border: none !important;
+}
 
