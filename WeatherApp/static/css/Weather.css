@@ -7,7 +7,8 @@ body{
    width:100%;
    background-position:top;
    background-size:cover;
-   background-repeat: repeat;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
 }
 
 
