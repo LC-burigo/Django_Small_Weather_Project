@@ -9,4 +9,6 @@ urlpatterns = [
     path('delete/<pk>/', views.WeatherDeleteView.as_view(), name='delete_city'),
     path('hourly', views.Hourly, name='hourly'),
     path('delete_hourly/<pk>/', views.WeatherHourlyDeleteView.as_view(), name='delete_hourly_city'),
+    path('average', views.Average, name='average'),
+    path('delete_average/<pk>/', views.WeatherAverageDeleteView.as_view(), name='delete_average_city'),
 ]
