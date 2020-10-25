@@ -242,20 +242,22 @@ def Average(request):
         for i in range(0, 24):
             Sum_Temperature += hourly[i]['temp']
             Sum_humidity += hourly[i]['humidity']
-            Sum_speedwind += hourly[i]['speedwind']
+            Sum_speedwind += hourly[i]['wind_speed']
             Sum_pressure += hourly[1]['pressure']
             i += 1
 
-    Weather_average = {
-        "Temperature_average": Sum_Temperature/24,
-        "Humidity_average": Sum_humidity/24,
-        "WindSpeed": Sum_speedwind/24,
-        "Pressure": Sum_pressure/24,
-    }
+        Weather_average = {
+            "Temperature_average": Sum_Temperature/24,
+            "Humidity_average": Sum_humidity/24,
+            "WindSpeed": Sum_speedwind/24,
+            "Pressure": Sum_pressure/24,
+            "Id": city.Id,
+            "Address": city.Address,
+        }
 
     Average_list.append(Weather_average)
 
-    context = {'Weather_average': Weather_average, 'form': form}
+    context = {'Average_list': Average_list, 'form': form}
 
     return render(request, 'WeatherApp/Average_Weather.html', context)
 
