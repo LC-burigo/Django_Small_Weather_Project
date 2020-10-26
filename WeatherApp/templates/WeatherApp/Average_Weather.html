@@ -27,10 +27,10 @@
                             <tr>
                                 <td>{{ Weather_average.Id }}</td>
                                 <td>{{ Weather_average.City }}</td>
-                                <td>{{ Weather_average.Temperature }} ºF</td>
-                                <td>{{ Weather_average.Humidity }} %</td>
-                                <td>{{ Weather_average.Wind_Speed }} Km/h</td>
-                                <td>{{ Weather_average.Pressure }} hPa</td>
+                                <td>{{ Weather_average.Temperature_average }} ºF</td>
+                                <td>{{ Weather_average.Humidity_average }} %</td>
+                                <td>{{ Weather_average.WindSpeed_average }} Km/h</td>
+                                <td>{{ Weather_average.Pressure_average }} hPa</td>
                                 <td><a href="{% url 'WeatherApp:delete_average_city' Weather_average.Id %}">X</a></td>
                             </tr>
                     {% endfor %}

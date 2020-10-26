@@ -238,24 +238,22 @@ def Average(request):
         # Get only the hourlies features of this particular city and put it in a dictionary
 
         hourly = data['hourly']
-        i = 0
         for i in range(0, 24):
             Sum_Temperature += hourly[i]['temp']
             Sum_humidity += hourly[i]['humidity']
             Sum_speedwind += hourly[i]['wind_speed']
-            Sum_pressure += hourly[1]['pressure']
-            i += 1
+            Sum_pressure += hourly[i]['pressure']
 
         Weather_average = {
             "Temperature_average": Sum_Temperature/24,
             "Humidity_average": Sum_humidity/24,
-            "WindSpeed": Sum_speedwind/24,
-            "Pressure": Sum_pressure/24,
+            "WindSpeed_average": Sum_speedwind/24,
+            "Pressure_average": Sum_pressure/24,
             "Id": city.Id,
             "Address": city.Address,
         }
 
-    Average_list.append(Weather_average)
+        Average_list.append(Weather_average)
 
     context = {'Average_list': Average_list, 'form': form}
 
