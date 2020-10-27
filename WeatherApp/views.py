@@ -43,7 +43,7 @@ def Current(request):
                 Error_message = 'City already exists in the database'
 
     Cities = City.objects.all()
-    Weather_list = []
+    Current_list = []
 
     for city in Cities:
 
@@ -68,7 +68,7 @@ def Current(request):
         data = response.json()
 
         # Get only the current features of this particular city and put it in a dictionary
-        City_Weather = {
+        Current_Dict = {
             'Id': city.Id,
             'City': city.Address,
             'Date': datetime.datetime.fromtimestamp(data['current']['dt']).strftime('%Y-%m-%d %H:%M:%S'),
@@ -79,16 +79,16 @@ def Current(request):
             'Icon': data['current']['weather'][0]['icon'],
         }
 
-        Weather_list.append(City_Weather)
-    context = {'Weather_list': Weather_list, 'form': form}
+        Current_list.append(Current_Dict)
+    context = {'Current_list': Current_list, 'form': form}
 
     return render(request, 'WeatherApp/Current_Weather.html', context)
 
 
-class WeatherDeleteView(DeleteView):
+class WeatherCurrentDeleteView(DeleteView):
     model = City
     context_object_name = "Wd"
-    template_name = "WeatherApp/Weather_confirm_delete.html"
+    template_name = "WeatherApp/Weather_current_confirm_delete.html"
     success_url = reverse_lazy("WeatherApp:current")
 
 

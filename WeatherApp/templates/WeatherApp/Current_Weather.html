@@ -25,17 +25,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for City_Weather in Weather_list %}
+                    {% for Current_Dict in Current_list %}
                             <tr>
-                                <td>{{  City_Weather.Id }}</td>
-                                <td>{{  City_Weather.City }}</td>
-                                <td>{{  City_Weather.Date }}</td>
-                                <td>{{ City_Weather.Temperature }} ºF</td>
-                                <td>{{ City_Weather.Humidity }} %</td>
-                                <td>{{ City_Weather.Wind_Speed }} Km/h</td>
-                                <td>{{ City_Weather.Pressure }} hPa</td>
-                                <td><img src="http://openweathermap.org/img/wn/{{ City_Weather.Icon }}@2x.png" class="media-object" style="width:60px"></td>
-                                <td><a href="{% url 'WeatherApp:delete_city' City_Weather.Id %}">X</a></td>
+                                <td>{{  Current_Dict.Id }}</td>
+                                <td>{{  Current_Dict.City }}</td>
+                                <td>{{  Current_Dict.Date }}</td>
+                                <td>{{ Current_Dict.Temperature }} ºF</td>
+                                <td>{{ Current_Dict.Humidity }} %</td>
+                                <td>{{ Current_Dict.Wind_Speed }} Km/h</td>
+                                <td>{{ Current_Dict.Pressure }} hPa</td>
+                                <td><img src="http://openweathermap.org/img/wn/{{ Current_Dict.Icon }}@2x.png" class="media-object" style="width:60px"></td>
+                                <td><a href="{% url 'WeatherApp:delete_current_city' Current_Dict.Id %}">X</a></td>
                             </tr>
                     {% endfor %}
                 </tbody>
