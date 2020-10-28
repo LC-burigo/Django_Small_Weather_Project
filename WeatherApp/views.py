@@ -43,7 +43,7 @@ def Current(request):
                 Error_message = 'City already exists in the database'
 
     Cities = City.objects.all()
-    Current_list = []
+    Current_List = []
 
     for city in Cities:
 
@@ -79,8 +79,8 @@ def Current(request):
             'Icon': data['current']['weather'][0]['icon'],
         }
 
-        Current_list.append(Current_Dict)
-    context = {'Current_list': Current_list, 'form': form}
+        Current_List.append(Current_Dict)
+    context = {'Current_List': Current_List, 'form': form}
 
     return render(request, 'WeatherApp/Current_Weather.html', context)
 
@@ -211,8 +211,8 @@ def Average(request):
     Sum_humidity = 0
     Sum_speedwind = 0
     Sum_pressure = 0
-    Weather_average = {}
-    Average_list = []
+    Average_Dict = {}
+    Average_List = []
 
     for city in Cities:
 
@@ -244,7 +244,7 @@ def Average(request):
             Sum_speedwind += hourly[i]['wind_speed']
             Sum_pressure += hourly[i]['pressure']
 
-        Weather_average = {
+        Average_Dict = {
             "Temperature_average": Sum_Temperature/24,
             "Humidity_average": Sum_humidity/24,
             "WindSpeed_average": Sum_speedwind/24,
@@ -253,9 +253,9 @@ def Average(request):
             "Address": city.Address,
         }
 
-        Average_list.append(Weather_average)
+        Average_Dict.append(Average_Dict)
 
-    context = {'Average_list': Average_list, 'form': form}
+    context = {'Average_List': Average_List, 'form': form}
 
     return render(request, 'WeatherApp/Average_Weather.html', context)
 

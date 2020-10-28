@@ -23,15 +23,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for Weather_average in Average_list %}
+                    {% for Average_Dict in Average_Dict %}
                             <tr>
-                                <td>{{ Weather_average.Id }}</td>
-                                <td>{{ Weather_average.City }}</td>
-                                <td>{{ Weather_average.Temperature_average }} ºF</td>
-                                <td>{{ Weather_average.Humidity_average }} %</td>
-                                <td>{{ Weather_average.WindSpeed_average }} Km/h</td>
-                                <td>{{ Weather_average.Pressure_average }} hPa</td>
-                                <td><a href="{% url 'WeatherApp:delete_average_city' Weather_average.Id %}">X</a></td>
+                                <td>{{ Average_Dict.Id }}</td>
+                                <td>{{ Average_Dict.City }}</td>
+                                <td>{{ Average_Dict.Temperature_average }} ºF</td>
+                                <td>{{ Average_Dict.Humidity_average }} %</td>
+                                <td>{{ Average_Dict.WindSpeed_average }} Km/h</td>
+                                <td>{{ Average_Dict.Pressure_average }} hPa</td>
+                                <td><a href="{% url 'WeatherApp:delete_average_city' Average_Dict.Id %}">X</a></td>
                             </tr>
                     {% endfor %}
                 </tbody>
