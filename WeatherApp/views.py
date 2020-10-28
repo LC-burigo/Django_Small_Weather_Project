@@ -122,8 +122,8 @@ def Hourly(request):
                 Error_message = 'City already exists in the database'
 
     Cities = City.objects.all()
-    Weather_Dict = {}
-    Weather_city = []
+    Hourly_Dict = {}
+    Hourly_List = []
 
     for city in Cities:
 
@@ -151,20 +151,20 @@ def Hourly(request):
         hourly = data['hourly']
         i = 0
         for i in range(0, 24):
-            Weather_Dict["Horario{}".format(i)] = datetime.datetime.fromtimestamp(hourly[i]['dt']).strftime('%Y-%m-%d %H:%M:%S')
-            Weather_Dict["Temperature{}".format(i)] = hourly[i]['temp']
-            Weather_Dict["Humidity{}".format(i)] = hourly[i]['humidity']
-            Weather_Dict["Wind_speed{}".format(i)] = hourly[i]['wind_speed']
-            Weather_Dict["Pressure{}".format(i)] = hourly[i]['pressure']
-            Weather_Dict["Icon{}".format(i)] = hourly[i]['weather'][0]['icon']
+            Hourly_Dict["Horario{}".format(i)] = datetime.datetime.fromtimestamp(hourly[i]['dt']).strftime('%Y-%m-%d %H:%M:%S')
+            Hourly_Dict["Temperature{}".format(i)] = hourly[i]['temp']
+            Hourly_Dict["Humidity{}".format(i)] = hourly[i]['humidity']
+            Hourly_Dict["Wind_speed{}".format(i)] = hourly[i]['wind_speed']
+            Hourly_Dict["Pressure{}".format(i)] = hourly[i]['pressure']
+            Hourly_Dict["Icon{}".format(i)] = hourly[i]['weather'][0]['icon']
             i += 1
 
-        Weather_Dict["Address"] = city.Address
-        Weather_Dict["Id"] = city.Id
-        print(Weather_Dict)
-        Weather_city.append(Weather_Dict)
+        Hourly_Dict["Address"] = city.Address
+        Hourly_Dict["Id"] = city.Id
+        print(Hourly_Dict)
+        Hourly_List.append(Hourly_Dict)
 
-    context = {'Weather_city': Weather_city, 'form': form}
+    context = {'Hourly_List': Hourly_List, 'form': form}
 
     return render(request, 'WeatherApp/Hourly_Weather.html', context)
 
