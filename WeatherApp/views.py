@@ -253,7 +253,7 @@ def Average(request):
             "Address": city.Address,
         }
 
-        Average_Dict.append(Average_Dict)
+        Average_List.append(Average_Dict)
 
     context = {'Average_List': Average_List, 'form': form}
 
@@ -302,8 +302,8 @@ def Max_Min(request):
     List_humidity = []
     List_speedwind =[]
     List_pressure = []
-    Weather_Max_Min = {}
-    Max_Min_list = []
+    Max_Min_Dict = {}
+    Max_Min_List = []
 
     for city in Cities:
 
@@ -335,7 +335,7 @@ def Max_Min(request):
             List_speedwind.append(hourly[i]['wind_speed'])
             List_pressure.append(hourly[i]['pressure'])
 
-        Weather_Max_Min = {
+        Max_Min_Dict = {
             "Max_Temperature": max(List_Temperature),
             "Min_Temperature": min(List_Temperature),
             "Max_Humidity": max(List_humidity),
@@ -348,9 +348,9 @@ def Max_Min(request):
             "Address": city.Address,
         }
 
-        Max_Min_list.append(Weather_Max_Min)
+        Max_Min_List.append(Max_Min_Dict)
 
-    context = {'Max_Min_list': Max_Min_list, 'form': form}
+    context = {'Max_Min_List': Max_Min_List, 'form': form}
 
     return render(request, 'WeatherApp/Max_Min_Weather.html', context)
 
@@ -360,3 +360,4 @@ class Weather_Max_Min_DeleteView(DeleteView):
     context_object_name = "Wd"
     template_name = "WeatherApp/Weather_Max_Min_confirm_delete.html"
     success_url = reverse_lazy("WeatherApp:max_min")
+

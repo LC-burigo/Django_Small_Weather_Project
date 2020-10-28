@@ -32,7 +32,7 @@
                             <td>{{ Hourly_Dict.Wind_speed23 }} Km/h</td>
                             <td>{{ Hourly_Dict.Pressure23 }} hPa</td>
                             <td><img src="http://openweathermap.org/img/wn/{{ Hourly_Dict.Icon23 }}@2x.png" class="media-object" style="width:60px"></td>
-                            <td><a href="{% url 'WeatherApp:delete_city' Hourly_Dict.Id %}">X</a></td>
+                            <td><a href="{% url 'WeatherApp:delete_hourly_city' Hourly_Dict.Id %}">X</a></td>
                         </tr>
                     <tr>
                             <td>{{ Hourly_Dict.Horario22 }}</td>

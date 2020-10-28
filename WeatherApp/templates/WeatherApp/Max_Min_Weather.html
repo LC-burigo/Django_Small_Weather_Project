@@ -27,19 +27,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for Weather_Max_Min in Max_Min_list %}
+                    {% for Max_Min_Dict in Max_Min_List %}
                             <tr>
-                                <td>{{ Weather_Max_Min.Id }}</td>
-                                <td>{{ Weather_Max_Min.City }}</td>
-                                <td>{{ Weather_Max_Min.Max_Temperature }}ºF</td>
-                                <td>{{ Weather_Max_Min.Min_Temperature }}ºF</td>
-                                <td>{{ Weather_Max_Min.Max_Humidity }}%</td>
-                                <td>{{ Weather_Max_Min.Min_Humidity }}%</td>
-                                <td>{{ Weather_Max_Min.Max_WindSpeed }}Km/h</td>
-                                <td>{{ Weather_Max_Min.Min_WindSpeed }}Km/h</td>
-                                <td>{{ Weather_Max_Min.Max_Pressure }}hPa</td>
-                                <td>{{ Weather_Max_Min.Min_Pressure }}hPa</td>
-                                <td><a href="{% url 'WeatherApp:delete_max_min_city' Weather_Max_Min.Id %}">X</a></td>
+                                <td>{{ Max_Min_Dict.Id }}</td>
+                                <td>{{ Max_Min_Dict.City }}</td>
+                                <td>{{ Max_Min_Dict.Max_Temperature }}ºF</td>
+                                <td>{{ Max_Min_Dict.Min_Temperature }}ºF</td>
+                                <td>{{ Max_Min_Dict.Max_Humidity }}%</td>
+                                <td>{{ Max_Min_Dict.Min_Humidity }}%</td>
+                                <td>{{ Max_Min_Dict.Max_WindSpeed }}Km/h</td>
+                                <td>{{ Max_Min_Dict.Min_WindSpeed }}Km/h</td>
+                                <td>{{ Max_Min_Dict.Max_Pressure }}hPa</td>
+                                <td>{{ Max_Min_Dict.Min_Pressure }}hPa</td>
+                                <td><a href="{% url 'WeatherApp:delete_max_min_city' Max_Min_Dict.Id %}">X</a></td>
                             </tr>
                     {% endfor %}
                 </tbody>
