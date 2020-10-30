@@ -149,15 +149,13 @@ def Hourly(request):
         # Get only the hourlies features of this particular city and put it in a dictionary
 
         hourly = data['hourly']
-        i = 0
-        for i in range(0, 24):
+        for i in range(0, len(hourly)):
             Hourly_Dict["Horario{}".format(i)] = datetime.datetime.fromtimestamp(hourly[i]['dt']).strftime('%Y-%m-%d %H:%M:%S')
             Hourly_Dict["Temperature{}".format(i)] = hourly[i]['temp']
             Hourly_Dict["Humidity{}".format(i)] = hourly[i]['humidity']
             Hourly_Dict["Wind_speed{}".format(i)] = hourly[i]['wind_speed']
             Hourly_Dict["Pressure{}".format(i)] = hourly[i]['pressure']
             Hourly_Dict["Icon{}".format(i)] = hourly[i]['weather'][0]['icon']
-            i += 1
 
         Hourly_Dict["Address"] = city.Address
         Hourly_Dict["Id"] = city.Id
@@ -238,17 +236,17 @@ def Average(request):
         # Get only the hourlies features of this particular city and put it in a dictionary
 
         hourly = data['hourly']
-        for i in range(0, 24):
+        for i in range(0, len(hourly)):
             Sum_Temperature += hourly[i]['temp']
             Sum_humidity += hourly[i]['humidity']
             Sum_speedwind += hourly[i]['wind_speed']
             Sum_pressure += hourly[i]['pressure']
 
         Average_Dict = {
-            "Temperature_average": Sum_Temperature/24,
-            "Humidity_average": Sum_humidity/24,
-            "WindSpeed_average": Sum_speedwind/24,
-            "Pressure_average": Sum_pressure/24,
+            "Temperature_average": Sum_Temperature/len(hourly),
+            "Humidity_average": Sum_humidity/len(hourly),
+            "WindSpeed_average": Sum_speedwind/len(hourly),
+            "Pressure_average": Sum_pressure/len(hourly),
             "Id": city.Id,
             "Address": city.Address,
         }
@@ -329,7 +327,7 @@ def Max_Min(request):
         # Get only the hourlies features of this particular city and put it in a dictionary
 
         hourly = data['hourly']
-        for i in range(0, 24):
+        for i in range(0, len(hourly)):
             List_Temperature.append(hourly[i]['temp'])
             List_humidity.append(hourly[i]['humidity'])
             List_speedwind.append(hourly[i]['wind_speed'])
