@@ -2,15 +2,45 @@ body{
    background: 4px white;
    font-family: 'Raleway', sans-serif;
    color: #fff;
-   background:url('Florianopolis.jpg');
-   height:100vh;
-   width:100%;
-   background-position:top;
-   background-size:cover;
-   background-repeat: no-repeat;
-   background-attachment: fixed;
+   font-weight: bold;
 }
 #table1 td{
     border: none !important;
+}
+.parallaxone {
+  background-image: url("Florianopolis.jpg");
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallaxtwo {
+  background-image: url("Florianopolis2.jpg");
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallaxthree {
+  background-image: url("Florianopolis3.jpg");
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallaxfour {
+  background-image: url("Florianopolis4.jpg");
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h3{
+   color: DodgerBlue;
+   font-weight: bold;
 }
 
