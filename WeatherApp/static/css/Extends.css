@@ -1,0 +1,10 @@
+body{
+   background: 4px white;
+   font-family: 'Raleway', sans-serif;
+   color: #fff;
+   font-weight: bold;
+   background-image: url('Florianopolis.jpg')
+}
+#table1 td{
+    border: none !important;
+}
