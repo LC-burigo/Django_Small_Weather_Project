@@ -3,8 +3,31 @@ body{
    font-family: 'Raleway', sans-serif;
    color: #fff;
    font-weight: bold;
-   background-image: url('Florianopolis.jpg')
+   background-image: url('Florianopolis.jpg');
+   height:100vh;
+   width:100%;
+   background-position:top;
+   background-size:cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   font-weight: bold;
 }
 #table1 td{
     border: none !important;
+}
+.footer{
+    background-color: #1F1F1F;
+    padding: 1rem;
+}
+#copy-area {
+  background-color: #F1F1F1;
+}
+
+#copy-area .container {
+  padding: 10px 0;
+  text-align: center;
+}
+
+#copy-area .container p {
+  margin-bottom: 0;
 }
