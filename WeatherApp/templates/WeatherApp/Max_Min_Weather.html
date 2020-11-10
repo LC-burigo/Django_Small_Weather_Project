@@ -30,7 +30,7 @@
                     {% for Max_Min_Dict in Max_Min_List %}
                             <tr>
                                 <td>{{ Max_Min_Dict.Id }}</td>
-                                <td>{{ Max_Min_Dict.City }}</td>
+                                <td>{{ Max_Min_Dict.Address }}</td>
                                 <td>{{ Max_Min_Dict.Max_Temperature }}ºF</td>
                                 <td>{{ Max_Min_Dict.Min_Temperature }}ºF</td>
                                 <td>{{ Max_Min_Dict.Max_Humidity }}%</td>
@@ -39,7 +39,7 @@
                                 <td>{{ Max_Min_Dict.Min_WindSpeed }}Km/h</td>
                                 <td>{{ Max_Min_Dict.Max_Pressure }}hPa</td>
                                 <td>{{ Max_Min_Dict.Min_Pressure }}hPa</td>
-                                <td><a href="{% url 'WeatherApp:delete_max_min_city' Max_Min_Dict.Id %}">X</a></td>
+                                <td><a class="btn btn-danger" href="{% url 'WeatherApp:delete_max_min_city' Max_Min_Dict.Id %}" role="button">Delete</a></td>
                             </tr>
                     {% endfor %}
                 </tbody>

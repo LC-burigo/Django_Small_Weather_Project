@@ -26,12 +26,12 @@
                     {% for Average_Dict in Average_List %}
                             <tr>
                                 <td>{{ Average_Dict.Id }}</td>
-                                <td>{{ Average_Dict.City }}</td>
+                                <td>{{ Average_Dict.Address }}</td>
                                 <td>{{ Average_Dict.Temperature_average }} ºF</td>
                                 <td>{{ Average_Dict.Humidity_average }} %</td>
                                 <td>{{ Average_Dict.WindSpeed_average }} Km/h</td>
                                 <td>{{ Average_Dict.Pressure_average }} hPa</td>
-                                <td><a href="{% url 'WeatherApp:delete_average_city' Average_Dict.Id %}">X</a></td>
+                                <td><a class="btn btn-danger" href="{% url 'WeatherApp:delete_average_city' Average_Dict.Id %}" role="button">Delete</a></td>
                             </tr>
                     {% endfor %}
                 </tbody>
