@@ -16,6 +16,9 @@ def Current(request):
     url = "https://community-open-weather-map.p.rapidapi.com/onecall/timemachine"
     url_second = "https://community-open-weather-map.p.rapidapi.com/weather"
     form = CityForm()
+    Error_message = ''
+    message = ''
+    message_class = ''
 
     if request.method == 'POST':
         form = CityForm(request.POST)  # Handling form request
@@ -41,6 +44,13 @@ def Current(request):
 
             else:
                 Error_message = 'City already exists in the database'
+
+        if Error_message:
+            message = Error_message
+            message_class = 'alert alert-danger'
+        else:
+            message = 'City added successfully'
+            message_class = 'alert alert-success'
 
     Cities = City.objects.all()
     Current_List = []
@@ -80,7 +90,7 @@ def Current(request):
         }
 
         Current_List.append(Current_Dict)
-    context = {'Current_List': Current_List, 'form': form}
+    context = {'Current_List': Current_List, 'form': form, 'message': message, 'message_class': message_class}
 
     return render(request, 'WeatherApp/Current_Weather.html', context)
 
@@ -96,6 +106,9 @@ def Hourly(request):
     url = "https://community-open-weather-map.p.rapidapi.com/onecall/timemachine"
     url_second = "https://community-open-weather-map.p.rapidapi.com/weather"
     form = CityForm()
+    Error_message = ''
+    message = ''
+    message_class = ''
 
     if request.method == 'POST':
         form = CityForm(request.POST)  # Handling form request
@@ -120,6 +133,13 @@ def Hourly(request):
 
             else:
                 Error_message = 'City already exists in the database'
+
+        if Error_message:
+            message = Error_message
+            message_class = 'alert alert-danger'
+        else:
+            message = 'City added successfully'
+            message_class = 'alert alert-success'
 
     Cities = City.objects.all()
     Hourly_Dict = {}
@@ -162,7 +182,7 @@ def Hourly(request):
         print(Hourly_Dict)
         Hourly_List.append(Hourly_Dict)
 
-    context = {'Hourly_List': Hourly_List, 'form': form}
+    context = {'Hourly_List': Hourly_List, 'form': form, 'message': message, 'message_class': message_class}
 
     return render(request, 'WeatherApp/Hourly_Weather.html', context)
 
@@ -178,6 +198,9 @@ def Average(request):
     url = "https://community-open-weather-map.p.rapidapi.com/onecall/timemachine"
     url_second = "https://community-open-weather-map.p.rapidapi.com/weather"
     form = CityForm()
+    Error_message = ''
+    message = ''
+    message_class = ''
 
     if request.method == 'POST':
         form = CityForm(request.POST)  # Handling form request
@@ -202,6 +225,13 @@ def Average(request):
 
             else:
                 Error_message = 'City already exists in the database'
+
+        if Error_message:
+            message = Error_message
+            message_class = 'alert alert-danger'
+        else:
+            message = 'City added successfully'
+            message_class = 'alert alert-success'
 
     Cities = City.objects.all()
 
@@ -253,7 +283,7 @@ def Average(request):
 
         Average_List.append(Average_Dict)
 
-    context = {'Average_List': Average_List, 'form': form}
+    context = {'Average_List': Average_List, 'form': form, 'message': message, 'message_class': message_class}
 
     return render(request, 'WeatherApp/Average_Weather.html', context)
 
@@ -269,6 +299,9 @@ def Max_Min(request):
     url = "https://community-open-weather-map.p.rapidapi.com/onecall/timemachine"
     url_second = "https://community-open-weather-map.p.rapidapi.com/weather"
     form = CityForm()
+    Error_message = ''
+    message = ''
+    message_class = ''
 
     if request.method == 'POST':
         form = CityForm(request.POST)  # Handling form request
@@ -293,6 +326,13 @@ def Max_Min(request):
 
             else:
                 Error_message = 'City already exists in the database'
+
+        if Error_message:
+            message = Error_message
+            message_class = 'alert alert-danger'
+        else:
+            message = 'City added successfully'
+            message_class = 'alert alert-success'
 
     Cities = City.objects.all()
 
@@ -348,7 +388,7 @@ def Max_Min(request):
 
         Max_Min_List.append(Max_Min_Dict)
 
-    context = {'Max_Min_List': Max_Min_List, 'form': form}
+    context = {'Max_Min_List': Max_Min_List, 'form': form, 'message': message, 'message_class': message_class}
 
     return render(request, 'WeatherApp/Max_Min_Weather.html', context)
 
