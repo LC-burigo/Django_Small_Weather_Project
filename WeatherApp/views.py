@@ -6,7 +6,7 @@ from .models import City
 from django.views.generic import DeleteView, TemplateView
 from django.urls import reverse_lazy
 import datetime
-
+import json
 
 class IndexView(TemplateView):
     template_name = 'Base.html'
@@ -400,59 +400,73 @@ class Weather_Max_Min_DeleteView(DeleteView):
     success_url = reverse_lazy("WeatherApp:max_min")
 
 
-# def Bar_Chart(request):
-#     url = "https://community-open-weather-map.p.rapidapi.com/onecall/timemachine"
-#     url_second = "https://community-open-weather-map.p.rapidapi.com/weather"
-#     form = CityForm()
-#
-#     if request.method == 'POST':
-#         form = CityForm(request.POST)  # Handling form request
-#
-#         if form.is_valid():
-#             New_City = form.cleaned_data['Address']
-#             Existing_City = City.objects.filter(Address=New_City).count()
-#             if Existing_City == 0:
-#                 querystring = {"callback": "test", "id": "2172797", "units": "%22metric%22 or %22imperial%22",
-#                                "mode": "xml%2C html", "q": New_City}
-#
-#                 headers = {
-#                     'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com",
-#                     'x-rapidapi-key': "6446924734mshd20c29c9014fd63p155d13jsnc1cdd0345c05"
-#                 }
-#
-#                 response = requests.request("GET", url_second, headers=headers, params=querystring)
-#                 if response.status_code == 200:
-#                     form.save()
-#                 else:
-#                     Error_message = 'City does not exist in the world'
-#
-#             else:
-#                 Error_message = 'City already exists in the database'
-#
-#     Cities = City.objects.all()
-#
-#     for city in Cities:
-#
-#         # Get the coordinates of address of the city
-#         Geolocator = Nominatim(user_agent="Lucas")
-#         Location = Geolocator.geocode(city.Address)
-#         Coordinates = []
-#         Latitude = Location.latitude
-#         Longitude = Location.longitude
-#         Coordinates.append(Latitude)
-#         Coordinates.append(Longitude)
-#         #############################################################################
-#         querystring = {"lat": Coordinates[0], "lon": Coordinates[1], "dt": city.Dt}
-#
-#         headers = {
-#             'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com",
-#             'x-rapidapi-key': "6446924734mshd20c29c9014fd63p155d13jsnc1cdd0345c05"
-#         }
-#         # Get all the features of this particular city, in the last 24 hours
-#         response = requests.request("GET", url, headers=headers, params=querystring)
-#
-#         data = response.json()
-#         # Get only the hourlies features of this particular city and put it in a dictionary
+def Bar_Chart(request):
+    url = "https://community-open-weather-map.p.rapidapi.com/onecall/timemachine"
+    url_second = "https://community-open-weather-map.p.rapidapi.com/weather"
+    form = CityForm()
+
+    if request.method == 'POST':
+        form = CityForm(request.POST)  # Handling form request
+
+        if form.is_valid():
+            New_City = form.cleaned_data['Address']
+            Existing_City = City.objects.filter(Address=New_City).count()
+            if Existing_City == 0:
+                querystring = {"callback": "test", "id": "2172797", "units": "%22metric%22 or %22imperial%22",
+                               "mode": "xml%2C html", "q": New_City}
+
+                headers = {
+                    'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com",
+                    'x-rapidapi-key': "6446924734mshd20c29c9014fd63p155d13jsnc1cdd0345c05"
+                }
+
+                response = requests.request("GET", url_second, headers=headers, params=querystring)
+                if response.status_code == 200:
+                    form.save()
+                else:
+                    Error_message = 'City does not exist in the world'
+
+            else:
+                Error_message = 'City already exists in the database'
+
+    Cities = City.objects.all()
+    List_Temperature = []
+    List_Time = []
+    city_name = ''
+
+    for city in Cities:
+
+        # Get the coordinates of address of the city
+        Geolocator = Nominatim(user_agent="Lucas")
+        Location = Geolocator.geocode(city.Address)
+        Coordinates = []
+        Latitude = Location.latitude
+        Longitude = Location.longitude
+        Coordinates.append(Latitude)
+        Coordinates.append(Longitude)
+        #############################################################################
+        querystring = {"lat": Coordinates[0], "lon": Coordinates[1], "dt": city.Dt}
+
+        headers = {
+            'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com",
+            'x-rapidapi-key': "6446924734mshd20c29c9014fd63p155d13jsnc1cdd0345c05"
+        }
+        # Get all the features of this particular city, in the last 24 hours
+        response = requests.request("GET", url, headers=headers, params=querystring)
+
+        data = response.json()
+
+        # Get only the hourlies features of this particular city and put it in a dictionary
+        hourly = data['hourly']
+        for i in range(0, len(hourly)):
+            List_Temperature.append(hourly[i]['temp'])
+            List_Time.append(datetime.datetime.fromtimestamp(hourly[i]['dt']).strftime('%Y-%m-%d %H:%M:%S'))
+
+        city_name = city.Address
+
+    context = {'List_Temp': json.dumps(List_Temperature), 'List_time': json.dumps(List_Time), 'city_name': city_name}
+
+    return render(request, 'WeatherApp/Graphics.html', context)
 
 
 

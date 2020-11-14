@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/Extends.css' %}"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
 <!--Footer-->
     <link rel="stylesheet" type="text/css" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
@@ -36,7 +37,7 @@
       </li>
       <li class="nav-item">
         <li class="nav-item">
-        <a class="nav-link" href="#">Weather Graphics</a>
+        <a class="nav-link" href="{% url 'WeatherApp:graphics' %}">Weather Graphics</a>
       </li>
       <li class="nav-item">
       <li class="nav-item">

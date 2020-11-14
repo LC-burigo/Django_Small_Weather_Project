@@ -9,7 +9,7 @@ body{
 }
 .parallaxone {
   background-image: url("Florianopolis.jpg");
-  min-height: 1000px;
+  min-height: 800px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
