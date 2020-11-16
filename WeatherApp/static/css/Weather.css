@@ -17,7 +17,7 @@ body{
 }
 .parallaxtwo {
   background-image: url("Florianopolis2.jpg");
-  min-height: 700px;
+  min-height: 800px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -25,7 +25,7 @@ body{
 }
 .parallaxthree {
   background-image: url("Florianopolis3.jpg");
-  min-height: 700px;
+  min-height: 800px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -33,7 +33,15 @@ body{
 }
 .parallaxfour {
   background-image: url("Florianopolis4.jpg");
-  min-height: 700px;
+  min-height: 800px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallaxfive {
+  background-image: url("Florianopolis5.jpg");
+  min-height: 800px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,5 +51,31 @@ h3{
    color: DodgerBlue;
    font-weight: bold;
 }
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    text-align: center;
+    padding: 1.5rem;
+    z-index: 100;
+    background: transparent;
+    border-bottom: rgba(0, 0, 0, 0.1) solid 1px;
+    transition: all 0.5s;
+}
+header.active{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    text-align: center;
+    padding: 1.5rem;
+    z-index: 100;
+    background: blue;
+    border-bottom: rgba(0, 0, 0, 0.1) solid 1px;
+    transition: all 0.5s;
 
+}
 

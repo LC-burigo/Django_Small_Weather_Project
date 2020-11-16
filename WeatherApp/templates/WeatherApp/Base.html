@@ -27,85 +27,94 @@
 </head>
 <body>
 <div class="content">
-<div class="parallaxone"></div>
-<div style="height:100px;background-color:black;font-size:36px;color:white;font-weight: bold;">
-    <h3><a href="{% url 'WeatherApp:current' %}">Current Weather</a></h3>
-    <p>Here you can find four current weather features of any city. Enjoy this web page!!! </p>
-</div>
+    <header class="header"> Welcome to Django Weather app </header>
 
-<div class="parallaxtwo"></div>
-<div style="height:100px;background-color:black;font-size:36px;color:white;font-weight: bold;">
-    <h3><a href="{% url 'WeatherApp:hourly' %}">Hourly Weather</a></h3>
-    <p>Here you can find four hourlies weather features of any city. Enjoy this web page!!! </p>
-</div>
-
-<div class="parallaxthree"></div>
-<div style="height:100px;background-color:black;font-size:36px;color:white;font-weight: bold;">
-    <h3><a href="{% url 'WeatherApp:average' %}">Weather Average</a></h3>
-    <p>Here you can find the average of four weather features of the last 24 hours of any city. Enjoy this web page!!! </p>
-</div>
-
-<div class="parallaxfour"></div>
-<div style="height:150px;background-color:black;font-size:36px;color:white;font-weight: bold;">
-    <h3><a href="{% url 'WeatherApp:max_min' %}">Max and Min Weather features</a></h3>
-    <p>Here you can find the maximum and the minimum value of the four weather features in the last 24 hours of any city. Enjoy this web page!!! </p>
-</div>
-</div>
-
-<footer class="page-footer font-small mdb-color lighten-3 pt-4">
-  <div class="container text-center text-md-left">
-    <div class="row">
-
-      <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
-        <h5 class="font-weight-bold text-uppercase mb-4">Footer Content</h5>
-          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 200px;">
-        <p>Thank you for visit my website. Keep an eye here in my github profile to see more projects!!!</p>
-      </div>
-      <hr class="clearfix w-100 d-md-none">
-
-      <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
-        <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
-          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 200px;">
-        <ul class="list-unstyled list-inline text-center">
-            <li class="list-inline-item">
-                <a class="btn-floating btn-fb mx-1">
-                    <i href="https://www.facebook.com/lucas.burigo.98" class="fab fa-facebook-f"> </i>
-                </a>
-            </li>
-            <li class="list-inline-item">
-                <a href="https://github.com/LC-burigo" class="btn-floating btn-gplus mx-1">
-                    <i class="fab fa-github"></i>
-                </a>
-            </li>
-            <li class="list-inline-item">
-                <a href="https://www.linkedin.com/in/lucas-burigo-586243116/" class="btn-floating btn-li mx-1">
-                    <i class="fab fa-linkedin-in"> </i>
-                </a>
-            </li>
-<!--            <div style="font-size: 2rem;">-->
-<!--                <li class="list-inline-item">-->
-<!--                    <a class="btn-floating btn-gplus mx-1">-->
-<!--                        <div><i class="fab fa-facebook-f fa-fw blue-text"></i></div>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="list-inline-item">-->
-<!--                    <a class="btn-floating btn-gplus mx-1">-->
-<!--                        <div><i class="fab fa-github fa-fw black-text"></i></div>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="list-inline-item">-->
-<!--                    <a class="btn-floating btn-li mx-1">-->
-<!--                        <div><i class="fab fa-linkedin fa-fw blue-text"></i></div>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--            </div>-->
-        </ul>
-      </div>
+    <div class="parallaxone"></div>
+    <div style="height:150px;background-color:black;font-size:36px;color:white;font-weight: bold;">
+        <h3><a href="{% url 'WeatherApp:current' %}">Current Weather</a></h3>
+        <p>Here you can find four current weather features of any city. Enjoy this web page!!! </p>
     </div>
-  </div>
 
-  <div class="footer-copyright text-center py-3">Project created by: Lucas Búrigo</div>
-</footer>
+    <div class="parallaxtwo"></div>
+    <div style="height:150px;background-color:black;font-size:36px;color:white;font-weight: bold;">
+        <h3><a href="{% url 'WeatherApp:hourly' %}">Hourly Weather</a></h3>
+        <p>Here you can find four hourlies weather features of any city. Enjoy this web page!!! </p>
+    </div>
 
+    <div class="parallaxthree"></div>
+    <div style="height:100px;background-color:black;font-size:36px;color:white;font-weight: bold;">
+        <h3><a href="{% url 'WeatherApp:average' %}">Weather Average</a></h3>
+        <p>Here you can find the average of four weather features of the last 24 hours of any city. Enjoy this web page!!! </p>
+    </div>
+
+    <div class="parallaxfour"></div>
+    <div style="height:150px;background-color:black;font-size:36px;color:white;font-weight: bold;">
+        <h3><a href="{% url 'WeatherApp:max_min' %}">Max and Min Weather features</a></h3>
+        <p>Here you can find the maximum and the minimum value of the four weather features in the last 24 hours of any city. Enjoy this web page!!! </p>
+    </div>
+
+    <div class="parallaxfive"></div>
+    <div style="height:200px;background-color:black;font-size:36px;color:white;font-weight: bold;">
+        <h3><a href="{% url 'WeatherApp:graphics' %}">Graphics</a></h3>
+        <p>You can also have another option to view the behavior of climatic characteristics throughout the day. With our well-modeled and didactic graphics, you can effortlessly follow the daily weather history.</p>
+    </div>
+</div>
+
+    <footer class="page-footer font-small mdb-color lighten-3 pt-4">
+      <div class="container text-center text-md-left">
+        <div class="row">
+
+          <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+            <h5 class="font-weight-bold text-uppercase mb-4">Footer Content</h5>
+              <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 200px;">
+            <p>Thank you for visit my website. Keep an eye here in my github profile to see more projects!!!</p>
+          </div>
+          <hr class="clearfix w-100 d-md-none">
+
+          <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+            <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
+              <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 200px;">
+            <ul class="list-unstyled list-inline text-center">
+                <li class="list-inline-item">
+                    <a class="btn-floating btn-fb mx-1">
+                        <i href="https://www.facebook.com/lucas.burigo.98" class="fab fa-facebook-f"> </i>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="https://github.com/LC-burigo" class="btn-floating btn-gplus mx-1">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="https://www.linkedin.com/in/lucas-burigo-586243116/" class="btn-floating btn-li mx-1">
+                        <i class="fab fa-linkedin-in"> </i>
+                    </a>
+                </li>
+    <!--            <div style="font-size: 2rem;">-->
+    <!--                <li class="list-inline-item">-->
+    <!--                    <a class="btn-floating btn-gplus mx-1">-->
+    <!--                        <div><i class="fab fa-facebook-f fa-fw blue-text"></i></div>-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--                <li class="list-inline-item">-->
+    <!--                    <a class="btn-floating btn-gplus mx-1">-->
+    <!--                        <div><i class="fab fa-github fa-fw black-text"></i></div>-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--                <li class="list-inline-item">-->
+    <!--                    <a class="btn-floating btn-li mx-1">-->
+    <!--                        <div><i class="fab fa-linkedin fa-fw blue-text"></i></div>-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--            </div>-->
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-copyright text-center py-3">Project created by: Lucas Búrigo</div>
+    </footer>
+
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
 </body>
 </html>
