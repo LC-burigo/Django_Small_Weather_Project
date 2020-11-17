@@ -32,3 +32,9 @@ body{
 #copy-area .container p {
   margin-bottom: 0;
 }
+.chart-container{
+  position: relative;
+  margin: auto;
+  height: 50vh;
+  width: 50vw;
+}

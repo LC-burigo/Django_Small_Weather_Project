@@ -1,9 +1,9 @@
 {% extends "WeatherApp/Current_Weather.html" %}
 
 {% block content %}
-          <canvas id="productsChart" width="50" height="50"></canvas>
-
-
+<div class="chart-container">
+    <canvas id="productsChart"></canvas>
+</div>
 {% block scripts %}
             <script>
             var ctx = document.getElementById("productsChart");
@@ -48,7 +48,5 @@
             });
             </script>
 {% endblock %}
-        </div>
-        </div>
-    </div>
+
 {% endblock %}

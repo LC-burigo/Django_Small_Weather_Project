@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 import datetime
 import json
 
+
 class IndexView(TemplateView):
     template_name = 'Base.html'
 
@@ -142,10 +143,10 @@ def Hourly(request):
             message_class = 'alert alert-success'
 
     Cities = City.objects.all()
-    Hourly_Dict = {}
     Hourly_List = []
 
     for city in Cities:
+        Hourly_Dict = {}
 
         # Get the coordinates of address of the city
         Geolocator = Nominatim(user_agent="Lucas")
@@ -179,7 +180,6 @@ def Hourly(request):
 
         Hourly_Dict["Address"] = city.Address
         Hourly_Dict["Id"] = city.Id
-        print(Hourly_Dict)
         Hourly_List.append(Hourly_Dict)
 
     context = {'Hourly_List': Hourly_List, 'form': form, 'message': message, 'message_class': message_class}
@@ -235,14 +235,14 @@ def Average(request):
 
     Cities = City.objects.all()
 
-    Sum_Temperature = 0
-    Sum_humidity = 0
-    Sum_speedwind = 0
-    Sum_pressure = 0
-    Average_Dict = {}
     Average_List = []
 
     for city in Cities:
+        Sum_Temperature = 0
+        Sum_humidity = 0
+        Sum_speedwind = 0
+        Sum_pressure = 0
+        Average_Dict = {}
 
         # Get the coordinates of address of the city
         Geolocator = Nominatim(user_agent="Lucas")
@@ -336,14 +336,14 @@ def Max_Min(request):
 
     Cities = City.objects.all()
 
-    List_Temperature = []
-    List_humidity = []
-    List_speedwind =[]
-    List_pressure = []
-    Max_Min_Dict = {}
     Max_Min_List = []
 
     for city in Cities:
+        List_Temperature = []
+        List_humidity = []
+        List_speedwind = []
+        List_pressure = []
+        Max_Min_Dict = {}
 
         # Get the coordinates of address of the city
         Geolocator = Nominatim(user_agent="Lucas")
