@@ -36,5 +36,8 @@ body{
   position: relative;
   margin: auto;
   height: 50vh;
-  width: 50vw;
+  width: 100vw;
+}
+h3{
+    position: center;
 }

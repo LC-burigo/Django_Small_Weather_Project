@@ -1,12 +1,13 @@
 {% extends "WeatherApp/Current_Weather.html" %}
 
 {% block content %}
+<h3>{{city_name}}</h3>
 <div class="chart-container">
-    <canvas id="productsChart"></canvas>
+    <canvas id="{{city_name}}bar"></canvas>
 </div>
 {% block scripts %}
             <script>
-            var ctx = document.getElementById("productsChart");
+            var ctx = document.getElementById("{{city_name}}bar");
             var Time = JSON.parse('{{ List_time|safe }}');
             var Temp = JSON.parse('{{ List_Temp|safe }}');
 
@@ -15,10 +16,10 @@
                 data: {
                     labels: Time,
                     datasets: [{
-                        label: '{{city_name}}',
+                        label: 'Temperature',
                         data: Temp,
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 100, 71, 1)',
                             'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 206, 86, 0.2)',
                             'rgba(75, 192, 192, 0.2)',
