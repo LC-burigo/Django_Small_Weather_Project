@@ -5,12 +5,11 @@ body{
    font-weight: bold;
    background-image: url('Florianopolis.jpg');
    min-height: 100vh;
-   width:100%;
+   /*width:100%;*/
    background-position:top;
    background-size:cover;
    background-repeat: no-repeat;
    background-attachment: fixed;
-   font-weight: bold;
    padding-bottom: 100px;
 }
 #table1 td{
@@ -19,9 +18,10 @@ body{
 .footer{
     background-color: #1F1F1F;
     padding: 1rem;
-    position: absolute;
-    height: 100px;
+    position: fixed;
+    left: 0;
     bottom: 0;
+    width: 100%;
 }
 
 #copy-area .container {

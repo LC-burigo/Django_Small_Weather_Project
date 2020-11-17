@@ -273,10 +273,10 @@ def Average(request):
             Sum_pressure += hourly[i]['pressure']
 
         Average_Dict = {
-            "Temperature_average": Sum_Temperature/len(hourly),
-            "Humidity_average": Sum_humidity/len(hourly),
-            "WindSpeed_average": Sum_speedwind/len(hourly),
-            "Pressure_average": Sum_pressure/len(hourly),
+            "Temperature_average": round(Sum_Temperature/len(hourly), 2),
+            "Humidity_average": round(Sum_humidity/len(hourly), 2),
+            "WindSpeed_average": round(Sum_speedwind/len(hourly), 2),
+            "Pressure_average": round(Sum_pressure/len(hourly), 2),
             "Id": city.Id,
             "Address": city.Address,
         }

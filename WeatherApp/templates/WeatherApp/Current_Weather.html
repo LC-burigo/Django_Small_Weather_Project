@@ -47,50 +47,50 @@
   </div>
 </nav>
 {% block content %}
-    <div class="container">
-        <div class="row">
-        <div class="col-lg-12">
-    <form class="post-form" width=200px method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" class="btn btn-primary">Save</button>
-    </form>
-            <div class="{{message_class}}" role="alert">{{message}}</div>
+<div class="container">
+    <div class="row">
+    <div class="col-lg-12">
+      <form class="post-form" width=200px method="POST">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+      <div class="{{message_class}}" role="alert">{{message}}</div>
         <br>
         <br>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>City</th>
-                        <th>Date</th>
-                        <th>Temperature</th>
-                        <th>Humidity</th>
-                        <th>Wind Speed</th>
-                        <th>Pressure</th>
-                        <th>Icon</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for Current_Dict in Current_List %}
-                            <tr>
-                                <td>{{ Current_Dict.Id }}</td>
-                                <td>{{ Current_Dict.City }}</td>
-                                <td>{{ Current_Dict.Date }}</td>
-                                <td>{{ Current_Dict.Temperature }} ºF</td>
-                                <td>{{ Current_Dict.Humidity }} %</td>
-                                <td>{{ Current_Dict.Wind_Speed }} Km/h</td>
-                                <td>{{ Current_Dict.Pressure }} hPa</td>
-                                <td><img src="http://openweathermap.org/img/wn/{{ Current_Dict.Icon }}@2x.png" class="media-object" style="width:60px"></td>
-                                <td><a class="btn btn-danger" href="{% url 'WeatherApp:delete_current_city' Current_Dict.Id %}" role="button">Delete</a></td>
-                            </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>City</th>
+                    <th>Date</th>
+                    <th>Temperature</th>
+                    <th>Humidity</th>
+                    <th>Wind Speed</th>
+                    <th>Pressure</th>
+                    <th>Icon</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Current_Dict in Current_List %}
+                        <tr>
+                            <td>{{ Current_Dict.Id }}</td>
+                            <td>{{ Current_Dict.City }}</td>
+                            <td>{{ Current_Dict.Date }}</td>
+                            <td>{{ Current_Dict.Temperature }} ºF</td>
+                            <td>{{ Current_Dict.Humidity }} %</td>
+                            <td>{{ Current_Dict.Wind_Speed }} Km/h</td>
+                            <td>{{ Current_Dict.Pressure }} hPa</td>
+                            <td><img src="http://openweathermap.org/img/wn/{{ Current_Dict.Icon }}@2x.png" class="media-object" style="width:60px"></td>
+                            <td><a class="btn btn-danger" href="{% url 'WeatherApp:delete_current_city' Current_Dict.Id %}" role="button">Delete</a></td>
+                        </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-        </div>
-        </div>
     </div>
+    </div>
+</div>
 {% endblock %}
 <footer class="footer">
     <div id="copy-area">
