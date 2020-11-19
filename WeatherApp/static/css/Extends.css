@@ -17,7 +17,7 @@ body{
 }
 .footer{
     background-color: #1F1F1F;
-    padding: 1rem;
+    padding: 3px;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -35,9 +35,11 @@ body{
 .chart-container{
   position: relative;
   margin: auto;
-  height: 50vh;
-  width: 100vw;
+  height: 30vh;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
 }
 h3{
-    position: center;
+    text-align: center;
 }

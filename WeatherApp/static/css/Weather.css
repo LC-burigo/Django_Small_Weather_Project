@@ -14,6 +14,7 @@ body{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color:RGB(87, 85, 85);
 }
 .parallaxtwo {
   background-image: url("Florianopolis2.jpg");
@@ -22,6 +23,7 @@ body{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color:RGB(87, 85, 85);
 }
 .parallaxthree {
   background-image: url("Florianopolis3.jpg");
@@ -30,6 +32,7 @@ body{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color:RGB(87, 85, 85);
 }
 .parallaxfour {
   background-image: url("Florianopolis4.jpg");
@@ -38,6 +41,7 @@ body{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color:RGB(87, 85, 85);
 }
 .parallaxfive {
   background-image: url("Florianopolis5.jpg");
@@ -46,10 +50,12 @@ body{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color:RGB(87, 85, 85);
 }
 h3{
    color: DodgerBlue;
    font-weight: bold;
+   text-shadow: 2px 2px 5px red;
 }
 header{
     position: fixed;

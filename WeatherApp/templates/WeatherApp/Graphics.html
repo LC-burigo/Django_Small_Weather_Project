@@ -3,11 +3,13 @@
 {% block content %}
 <h3>{{city_name}}</h3>
 <div class="chart-container">
+    <canvas id="{{city_name}}line"></canvas>
     <canvas id="{{city_name}}bar"></canvas>
 </div>
+
 {% block scripts %}
             <script>
-            var ctx = document.getElementById("{{city_name}}bar");
+            var ctx = document.getElementById("{{city_name}}line");
             var Time = JSON.parse('{{ List_time|safe }}');
             var Temp = JSON.parse('{{ List_Temp|safe }}');
 
@@ -19,7 +21,52 @@
                         label: 'Temperature',
                         data: Temp,
                         backgroundColor: [
-                            'rgba(255, 100, 71, 1)',
+                            'rgba(255,0,0,0.3)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,0,0,0.3)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+            </script>
+
+
+
+            <script>
+            var ctx = document.getElementById("{{city_name}}bar");
+            var Time = JSON.parse('{{ List_time|safe }}');
+            var Humi = JSON.parse('{{ List_Humidity|safe }}');
+
+            var productsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Time,
+                    datasets: [{
+                        label: 'Humidity',
+                        data: Humi,
+                        backgroundColor: [
+                            'rgba(0,0,255,0.3)',
                             'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 206, 86, 0.2)',
                             'rgba(75, 192, 192, 0.2)',

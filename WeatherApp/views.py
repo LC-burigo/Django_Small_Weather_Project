@@ -431,6 +431,9 @@ def Bar_Chart(request):
 
     Cities = City.objects.all()
     List_Temperature = []
+    List_Humidity = []
+    List_WindSpeed = []
+    List_Pressure = []
     List_Time = []
     city_name = ''
 
@@ -460,11 +463,14 @@ def Bar_Chart(request):
         hourly = data['hourly']
         for i in range(0, len(hourly)):
             List_Temperature.append(hourly[i]['temp'])
+            List_Humidity.append(hourly[i]['humidity'])
+            List_WindSpeed.append(hourly[i]['wind_speed'])
+            List_Pressure.append(hourly[i]['pressure'])
             List_Time.append(datetime.datetime.fromtimestamp(hourly[i]['dt']).strftime('%Y-%m-%d %H:%M:%S'))
 
         city_name = city.Address
 
-    context = {'List_Temp': json.dumps(List_Temperature), 'List_time': json.dumps(List_Time), 'city_name': city_name}
+    context = {'List_Temp': json.dumps(List_Temperature), 'List_Pressure': json.dumps(List_Pressure), 'List_WindSpeed': json.dumps(List_WindSpeed), 'List_Humidity': json.dumps(List_Humidity), 'List_time': json.dumps(List_Time), 'city_name': city_name}
 
     return render(request, 'WeatherApp/Graphics.html', context)
 
