@@ -9,7 +9,7 @@ So, to describe this project, I will divide my explanation into 2 parts.\
 1) Functionalities
 
      * **Main page** \
-          :bookmark: In this template, we can see an effect in the header, the parallax effect and a fix footer.
-          ![parallax](https://media.giphy.com/media/R5p74UaH27WjOCzXdZ/giphy.gif)
+          :bookmark: In this template, we can see an effect in the header, the parallax effect and a fix footer. \
+          ![gif](https://media.giphy.com/media/R5p74UaH27WjOCzXdZ/giphy.gif)
      
 
