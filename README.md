@@ -11,6 +11,7 @@ So, to describe this project, I will divide my explanation into 2 parts.\
      * **Main page** \
           :bookmark: In this template, we can see an effect in the header, the parallax effect and a fix footer. \
           
-          <img src="ezgif.com-video-to-gif.gif"  width=400>
-          
+          <img src="ezgif.com-video-to-gif.gif"  width=400> \
+          :exclamation: When you click in the hiperlink, where the mouse go over, you will be directed to the corresponding page.     
+    
 
