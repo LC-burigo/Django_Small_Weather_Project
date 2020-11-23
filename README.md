@@ -10,6 +10,6 @@ So, to describe this project, I will divide my explanation into 2 parts.\
 
      * **Main page** \
           :bookmark: In this template, we can see an effect in the header, the parallax effect and a fix footer. \
-          ![gif](https://media.giphy.com/media/R5p74UaH27WjOCzXdZ/giphy.gif)
-     
+          <img src="https://media.giphy.com/media/R5p74UaH27WjOCzXdZ/giphy-downsized-large.gif"  width=600>
+          
 
