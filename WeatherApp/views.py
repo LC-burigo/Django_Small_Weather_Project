@@ -430,14 +430,15 @@ def Bar_Chart(request):
                 Error_message = 'City already exists in the database'
 
     Cities = City.objects.all()
-    List_Temperature = []
-    List_Humidity = []
-    List_WindSpeed = []
-    List_Pressure = []
-    List_Time = []
-    city_name = ''
+    List_graphic = []
 
     for city in Cities:
+        List_Temperature = []
+        List_Humidity = []
+        List_WindSpeed = []
+        List_Pressure = []
+        List_Time = []
+        Dict_graphic = {}
 
         # Get the coordinates of address of the city
         Geolocator = Nominatim(user_agent="Lucas")
@@ -468,9 +469,18 @@ def Bar_Chart(request):
             List_Pressure.append(hourly[i]['pressure'])
             List_Time.append(datetime.datetime.fromtimestamp(hourly[i]['dt']).strftime('%Y-%m-%d %H:%M:%S'))
 
-        city_name = city.Address
+        Dict_graphic = {
+            "Temperature": json.dumps(List_Temperature),
+            "Humidity": json.dumps(List_Humidity),
+            "WindSpeed": json.dumps(List_WindSpeed),
+            "Pressure": json.dumps(List_Pressure),
+            "Time": json.dumps(List_Time),
+            "Address": city.Address,
+        }
 
-    context = {'List_Temp': json.dumps(List_Temperature), 'List_Pressure': json.dumps(List_Pressure), 'List_WindSpeed': json.dumps(List_WindSpeed), 'List_Humidity': json.dumps(List_Humidity), 'List_time': json.dumps(List_Time), 'city_name': city_name}
+        List_graphic.append(Dict_graphic)
+
+    context = {"List_graphic": List_graphic}
 
     return render(request, 'WeatherApp/Graphics.html', context)
 

@@ -1,100 +1,191 @@
 {% extends "WeatherApp/Current_Weather.html" %}
 
 {% block content %}
-<h3>{{city_name}}</h3>
-<div class="chart-container">
-    <canvas id="{{city_name}}line"></canvas>
-    <canvas id="{{city_name}}bar"></canvas>
-</div>
 
-{% block scripts %}
-            <script>
-            var ctx = document.getElementById("{{city_name}}line");
-            var Time = JSON.parse('{{ List_time|safe }}');
-            var Temp = JSON.parse('{{ List_Temp|safe }}');
+{% for Dict_graphic in List_graphic %}
 
-            var productsChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: Time,
-                    datasets: [{
-                        label: 'Temperature',
-                        data: Temp,
-                        backgroundColor: [
-                            'rgba(255,0,0,0.3)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255,0,0,0.3)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
+    <h3>{{Dict_graphic.Address}}</h3>
+    <div class="chart-container">
+        <canvas id="{{Dict_graphic.Address}}temp"></canvas>
+        <canvas id="{{Dict_graphic.Address}}humi"></canvas>
+        <canvas id="{{Dict_graphic.Address}}wind"></canvas>
+        <canvas id="{{Dict_graphic.Address}}pressure"></canvas>
+    </div>
+
+    {% block scripts %}
+        <script>
+        var ctx = document.getElementById("{{Dict_graphic.Address}}temp");
+        var Time = JSON.parse('{{ Dict_graphic.Time|safe }}');
+        var Temp = JSON.parse('{{ Dict_graphic.Temperature|safe }}');
+
+        var productsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Time,
+                datasets: [{
+                    label: 'Temperature',
+                    data: Temp,
+                    backgroundColor: [
+                        'rgba(255,0,0,0.3)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,0,0,0.3)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
                     }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero:true
-                            }
-                        }]
-                    }
                 }
-            });
-            </script>
+            }
+        });
+        </script>
 
+        <script>
+        var ctx = document.getElementById("{{Dict_graphic.Address}}humi");
+        var Time = JSON.parse('{{ Dict_graphic.Time|safe }}');
+        var Humi = JSON.parse('{{ Dict_graphic.Humidity|safe }}');
 
-
-            <script>
-            var ctx = document.getElementById("{{city_name}}bar");
-            var Time = JSON.parse('{{ List_time|safe }}');
-            var Humi = JSON.parse('{{ List_Humidity|safe }}');
-
-            var productsChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: Time,
-                    datasets: [{
-                        label: 'Humidity',
-                        data: Humi,
-                        backgroundColor: [
-                            'rgba(0,0,255,0.3)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
+        var productsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Time,
+                datasets: [{
+                    label: 'Humidity',
+                    data: Humi,
+                    backgroundColor: [
+                        'rgba(0,0,255,0.3)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
                     }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero:true
-                            }
-                        }]
-                    }
                 }
-            });
-            </script>
-{% endblock %}
+            }
+        });
+        </script>
+
+        <script>
+        var ctx = document.getElementById("{{Dict_graphic.Address}}wind");
+        var Time = JSON.parse('{{ Dict_graphic.Time|safe }}');
+        var Wind = JSON.parse('{{ Dict_graphic.WindSpeed|safe }}');
+
+        var productsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Time,
+                datasets: [{
+                    label: 'Wind_Speed',
+                    data: Wind,
+                    backgroundColor: [
+                        'rgba(255, 255, 71, 0.5)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,0,0,0.3)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
+
+<script>
+        var ctx = document.getElementById("{{Dict_graphic.Address}}pressure");
+        var Time = JSON.parse('{{ Dict_graphic.Time|safe }}');
+        var pre = JSON.parse('{{ Dict_graphic.Pressure|safe }}');
+
+        var productsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Time,
+                datasets: [{
+                    label: 'Temperature',
+                    data: pre,
+                    backgroundColor: [
+                        'rgba(0, 0, 0, 1)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,0,0,0.3)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
+    {% endblock %}
+
+{% endfor %}
 
 {% endblock %}
