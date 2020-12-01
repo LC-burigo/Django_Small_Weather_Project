@@ -41,6 +41,7 @@ So, to describe this project, I will divide my explanation into 2 parts.\
      * **Graphics page** \
           :bookmark: This page have one problem that i´m trying to fix. However, keep patient because this functionality will come to help the view of those features.
           
+          <img src="project7.png"  width=400>
           
      * **Nav bar** \
           :bookmark: You can go to any of those pages clicking in the burger menu on the top left corner and choose one of then (current, hourly, average, max_min, graphics).
@@ -54,6 +55,15 @@ So, to describe this project, I will divide my explanation into 2 parts.\
           
           <img src="project3.png"  width=400> 
           
+          
+          
+2) What you need to download?
+
+     |    Django 3.0.3   | Geopy |  Datetime |
+     | ------------- | ------------- |----------|
+     | [pip install Django](https://www.djangoproject.com/download/)| [pip install Geopy](https://pypi.org/project/geopy/)|[pip install Datetime](https://pypi.org/project/datetime2/)|
+
+         
           
         
         
