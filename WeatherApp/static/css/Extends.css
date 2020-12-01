@@ -32,13 +32,17 @@ body{
 #copy-area .container p {
   margin-bottom: 0;
 }
+.container column {
+	flex-direction: column;
+	display: flex;
+	margin: auto;
+}
+
 .chart-container{
   position: relative;
-  margin: auto;
   height: 30vh;
   width: 80vw;
-  display: flex;
-  flex-direction: column;
+
 }
 h3{
     text-align: center;

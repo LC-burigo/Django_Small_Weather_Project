@@ -4,6 +4,7 @@
 
 {% for Dict_graphic in List_graphic %}
 
+<section class="container column">
     <h3>{{Dict_graphic.Address}}</h3>
     <div class="chart-container">
         <canvas id="{{Dict_graphic.Address}}temp"></canvas>
@@ -186,6 +187,7 @@
         </script>
     {% endblock %}
 
+</section>
 {% endfor %}
 
 {% endblock %}
